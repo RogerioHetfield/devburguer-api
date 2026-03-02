@@ -1,13 +1,16 @@
 import { Router } from 'express';
 import multer from 'multer';
-import CategoryController from './app/controllers/CategoryController.js';
-import OrderController from './app/controllers/OrderController.js';
+import multerConfig from './config/multer.cjs';
+
 import ProductController from './app/controllers/ProductController.js';
 import SessionController from './app/controllers/SessionController.js';
+import CategoryController from './app/controllers/CategoryController.js';
 import UserController from './app/controllers/UserController.js';
+import OrderController from './app/controllers/OrderController.js';
+import CreatePaymentIntentController from './app/controllers/stripe/CreatePaymentIntentController.js'
 import adminMiddleware from './app/middlewares/admin.js';
 import authMiddleware from './app/middlewares/auth.js';
-import multerConfig from './config/multer.cjs';
+
 
 
 
@@ -54,5 +57,7 @@ routes.post('/orders', OrderController.store);
 routes.get('/orders', OrderController.index);
 
 routes.put('/orders/:id', adminMiddleware, OrderController.update);
+
+routes.post('/create-payment-intent', CreatePaymentIntentController.store);
 
 export default routes;
