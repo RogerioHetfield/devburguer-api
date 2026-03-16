@@ -3,6 +3,7 @@ import routes from './routes.js';
 import './database/index.js';
 import fileRouteConfig from './config/fileRoutes.cjs';
 import cors from 'cors';
+import 'dotenv/config';
 
 const app = express();
 
